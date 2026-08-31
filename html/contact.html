@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact / Get a Quote — MAMORINO</title>
+<meta name="description" content="Request a free seismic reinforcement assessment for your home. No obligation — we reply within a few business days.">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div data-include="/html/common/header.html"></div>
+
+<main>
+
+  <section class="section">
+    <div class="container split">
+      <div class="prose">
+        <span class="eyebrow">Contact / Get a Quote</span>
+        <h1>Tell us about your home</h1>
+        <p class="lead">Fill in what you know — we'll follow up to schedule a site survey. There's no obligation, and we typically reply within a few business days.</p>
+        <img src="/image/consultation-icon.svg" alt="" width="72" height="72" aria-hidden="true">
+      </div>
+
+      <div class="plan-card">
+        <form class="form-stack" action="#" method="post">
+          <div class="field-row cols-2">
+            <div class="field"><label for="c-name">Name</label><input id="c-name" name="name" type="text" autocomplete="name" required></div>
+            <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" autocomplete="email" required></div>
+          </div>
+          <div class="field-row cols-2">
+            <div class="field"><label for="c-location">Property location</label><input id="c-location" name="location" type="text" placeholder="City, State / Country"></div>
+            <div class="field">
+              <label for="c-building">Building type</label>
+              <select id="c-building" name="building_type">
+                <option value="">Select one</option>
+                <option>Single-family, wood frame</option>
+                <option>Multi-family, wood frame</option>
+                <option>Not sure</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="c-inquiry">Inquiry type</label>
+            <select id="c-inquiry" name="inquiry_type">
+              <option>Assessment / Quote</option>
+              <option>General question</option>
+              <option>Partnership / Referral</option>
+            </select>
+          </div>
+          <div class="field"><label for="c-message">Message</label><textarea id="c-message" name="message" placeholder="Tell us about your home — age, size, anything you already know"></textarea></div>
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+          <p class="form-note">No obligation. We respond within a few business days.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <div class="coming-soon">
+        <strong>1-minute self-diagnosis tool — coming soon</strong>
+        Our Japanese-language site offers a quick self-diagnosis quiz. An English version for international properties is in development — check back here, or request a full assessment above in the meantime.
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div data-include="/html/common/footer.html"></div>
+<script src="/js/main.js"></script>
+</body>
+</html>

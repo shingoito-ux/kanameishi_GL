@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transparent Pricing — MAMORINO</title>
+<meta name="description" content="Area-based pricing with no hidden line items. Enter your home's size in m² or sqft to estimate your MAMORINO Base or MAMORINO+ project.">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div data-include="/html/common/header.html"></div>
+
+<main>
+
+  <section class="container hero--page">
+    <span class="eyebrow">Transparent Pricing</span>
+    <h1>One formula. No hidden line items.</h1>
+    <p class="lead">Both plans price off a single number — your home's floor area. Enter it below to see what MAMORINO Base and MAMORINO+ would cost.</p>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="simulator" data-simulator>
+        <div class="simulator__controls">
+          <div class="field-row cols-2">
+            <div class="field">
+              <label>Area unit</label>
+              <div class="unit-toggle" role="group" aria-label="Area unit">
+                <button type="button" data-sim-unit="sqm" class="is-active">m²</button>
+                <button type="button" data-sim-unit="sqft">sqft</button>
+              </div>
+            </div>
+            <div class="field">
+              <label>Currency</label>
+              <div class="unit-toggle" role="group" aria-label="Currency">
+                <button type="button" data-sim-currency="jpy" class="is-active">¥ JPY</button>
+                <button type="button" data-sim-currency="usd">$ USD</button>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label for="sim-area">Floor area</label>
+            <input id="sim-area" type="number" min="0" step="1" placeholder="e.g. 120" data-sim-area>
+          </div>
+          <p class="form-note">This is a rough estimate for planning purposes. Your exact price is confirmed after a free on-site survey.</p>
+        </div>
+        <div class="simulator__output">
+          <div class="simulator__row">
+            <span class="label">MAMORINO Base</span>
+            <span class="amount" data-sim-base>—</span>
+          </div>
+          <div class="simulator__row">
+            <span class="label">MAMORINO+</span>
+            <span class="amount" data-sim-plus>—</span>
+          </div>
+          <p class="simulator__note">Excludes termite / foundation-rot repair, quoted separately if found during the site survey. Contracts are priced in Japanese yen (¥) — USD shown here is an approximate reference at ¥150 = $1, not a live exchange rate.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">The Formula</span>
+        <h2>How the numbers work</h2>
+      </div>
+      <div class="table-wrap">
+        <table class="compare">
+          <thead>
+            <tr><th><span class="visually-hidden">Plan</span></th><th>Formula</th><th>Example — 120 m² home</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">MAMORINO Base</th>
+              <td class="price">¥500,000 base + ¥50,000 × area</td>
+              <td class="price">¥6,500,000 <span class="price-usd">≈ $43,300</span></td>
+            </tr>
+            <tr>
+              <th scope="row">MAMORINO+</th>
+              <td class="price">¥200,000 × area</td>
+              <td class="price">¥24,000,000 <span class="price-usd">≈ $160,000</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="coming-soon mt-note">
+        <strong>Termite &amp; foundation-rot repair — priced after inspection</strong>
+        We check for both during the site survey. If either is found, we quote the repair separately as an add-on — it's never bundled invisibly into the base formula above.
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container section-cta">
+      <h2>Ready to get an exact number?</h2>
+      <p class="lead">A free site survey turns this estimate into a firm quote.</p>
+      <div class="hero-actions">
+        <a href="/html/contact.html" class="btn btn-primary">Get a Free Assessment</a>
+        <a href="/html/our-plans.html" class="btn btn-ghost">Compare Plans</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div data-include="/html/common/footer.html"></div>
+<script src="/js/main.js"></script>
+</body>
+</html>

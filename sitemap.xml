@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Replace https://www.mamorino.example.com with the real domain before launch. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.mamorino.example.com/</loc></url>
+  <url><loc>https://www.mamorino.example.com/html/why-seismic-reinforcement.html</loc></url>
+  <url><loc>https://www.mamorino.example.com/html/our-plans.html</loc></url>
+  <url><loc>https://www.mamorino.example.com/html/proven-results.html</loc></url>
+  <url><loc>https://www.mamorino.example.com/html/our-process.html</loc></url>
+  <url><loc>https://www.mamorino.example.com/html/transparent-pricing.html</loc></url>
+  <url><loc>https://www.mamorino.example.com/html/about.html</loc></url>
+  <url><loc>https://www.mamorino.example.com/html/contact.html</loc></url>
+</urlset>

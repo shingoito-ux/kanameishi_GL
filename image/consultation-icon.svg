@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#F0932B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <!-- 左の人物 (頭と肩のみ) -->
+  <circle cx="20" cy="38" r="7" />
+  <path d="M11 58v-4c0-4.4 3.6-8 8-8h2c4.4 0 8 3.6 8 8v4" />
+
+  <!-- 右の人物 (頭と肩のみ) -->
+  <circle cx="44" cy="38" r="7" />
+  <path d="M35 58v-4c0-4.4 3.6-8 8-8h2c4.4 0 8 3.6 8 8v4" />
+
+  <!-- 中央の大きな吹き出し -->
+  <path d="M22 8h20a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-6l-4 6v-6h-10a4 4 0 0 1 -4 -4V12a4 4 0 0 1 4 -4z" />
+
+  <!-- 吹き出し内の点 (...) -->
+  <circle cx="25" cy="17" r="2" fill="#F0932B" stroke="none" />
+  <circle cx="32" cy="17" r="2" fill="#F0932B" stroke="none" />
+  <circle cx="39" cy="17" r="2" fill="#F0932B" stroke="none" />
+</svg>

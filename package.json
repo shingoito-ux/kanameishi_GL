@@ -1,0 +1,9 @@
+{
+  "name": "mamorino-en-site",
+  "private": true,
+  "version": "0.1.0",
+  "description": "MAMORINO English-language marketing site (no build step — html/common/ is included at request time)",
+  "scripts": {
+    "start": "node serve.js"
+  }
+}
