@@ -633,3 +633,42 @@ textarea { resize: vertical; min-height: 6.5rem; }
 }
 .cta-band h2 { font-size: var(--fs-h3); }
 .cta-band p { color: #B9C6C9; margin-top: 0.35rem; }
+
+/* ==========================================================================
+   site intro animation
+   ========================================================================== */
+
+.site-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #3F61A1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: introFadeOut 0.8s ease 2.0s forwards;
+}
+.site-intro__text {
+  color: #FFA05D;
+  font-family: var(--font-mono);
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  animation: introTextIn 1.5s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes introTextIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes introFadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
