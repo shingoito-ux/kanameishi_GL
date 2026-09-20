@@ -68,7 +68,105 @@
       });
     }
 
-    /* ---------- price simulator (Transparent Pricing page) ---------- */
+    /* ---------- header shadow on scroll + mobile sticky CTA ---------- */
+    /* The sticky bar is hidden on the contact page and whenever another CTA
+       (section CTA, form, footer) is already on screen. */
+
+    var stickyCta = document.querySelector('[data-sticky-cta]');
+    if (stickyCta && /contact\.html$/.test(location.pathname)) {
+      stickyCta.remove();
+      stickyCta = null;
+    }
+
+    var ctaZonesInView = new Set();
+
+    function updateChrome() {
+      var y = window.scrollY;
+      if (header) header.classList.toggle('is-scrolled', y > 8);
+      if (stickyCta) stickyCta.classList.toggle('is-visible', y > 480 && ctaZonesInView.size === 0);
+    }
+
+    if (stickyCta && 'IntersectionObserver' in window) {
+      var zoneObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) ctaZonesInView.add(entry.target);
+          else ctaZonesInView.delete(entry.target);
+        });
+        updateChrome();
+      });
+      Array.prototype.forEach.call(
+        document.querySelectorAll('.site-footer, .section-cta, .contact-card, form'),
+        function (zone) { zoneObserver.observe(zone); }
+      );
+    }
+
+    var scrollTicking = false;
+    window.addEventListener('scroll', function () {
+      if (scrollTicking) return;
+      scrollTicking = true;
+      window.requestAnimationFrame(function () {
+        scrollTicking = false;
+        updateChrome();
+      });
+    }, { passive: true });
+    updateChrome();
+
+    /* ---------- scroll reveal ---------- */
+    /* Blocks below the fold fade up as they scroll into view. Anything already on
+       screen at load is left alone (no flash), and nothing is hidden at all when
+       the visitor prefers reduced motion or the browser lacks IntersectionObserver.
+       Classes are removed again once the transition is done, so hover effects work. */
+
+    var REVEAL_SELECTOR = [
+      '.section-head', '.split > *', '.pillar', '.flow__item', '.stat-band .stat', '.stat-tile',
+      '.step', '.person', '.media', '.bar-compare', '.plan-card', '.simulator', '.coming-soon',
+      '.table-wrap', '.section-cta > *'
+    ].join(', ');
+
+    var revealEls = document.querySelectorAll(REVEAL_SELECTOR);
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (revealEls.length && 'IntersectionObserver' in window && !prefersReducedMotion) {
+      var siblingCount = new Map();
+
+      var revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          revealObserver.unobserve(el);
+          el.classList.add('is-in');
+          setTimeout(function () {
+            el.classList.remove('reveal', 'is-in');
+            el.style.removeProperty('--i');
+          }, 1600);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+      Array.prototype.forEach.call(revealEls, function (el) {
+        var parent = el.parentElement;
+        if (parent && parent.closest('.reveal')) return; /* child of an animating block */
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.92) return; /* already visible */
+        var index = siblingCount.get(parent) || 0;
+        siblingCount.set(parent, index + 1);
+        el.style.setProperty('--i', Math.min(index, 5)); /* stagger siblings */
+        el.classList.add('reveal');
+        revealObserver.observe(el);
+      });
+    }
+
+    /* ---------- logo → Home (on the home page itself: back to the top, no reload) ---------- */
+
+    if (location.pathname === '/' || /\/index\.html$/.test(location.pathname)) {
+      Array.prototype.forEach.call(document.querySelectorAll('.brand'), function (logo) {
+        logo.addEventListener('click', function (e) {
+          e.preventDefault();
+          var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+        });
+      });
+    }
+
+    /* ---------- price simulator (Plan & Pricing page) ---------- */
 
     var sim = document.querySelector('[data-simulator]');
     if (sim) {
@@ -76,7 +174,6 @@
       var unitButtons = sim.querySelectorAll('[data-sim-unit]');
       var currencyButtons = sim.querySelectorAll('[data-sim-currency]');
       var baseOut = sim.querySelector('[data-sim-base]');
-      var plusOut = sim.querySelector('[data-sim-plus]');
 
       var SQFT_PER_SQM = 10.7639;
       // Approximate reference rate only — not a live quote. Update periodically.
@@ -100,14 +197,11 @@
         var raw = parseFloat(areaInput.value);
         if (!raw || raw <= 0) {
           baseOut.textContent = '—';
-          plusOut.textContent = '—';
           return;
         }
         var sqm = unit === 'sqm' ? raw : raw / SQFT_PER_SQM;
         var base = 500000 + 50000 * sqm;
-        var plus = 200000 * sqm;
         baseOut.textContent = formatAmount(base);
-        plusOut.textContent = formatAmount(plus);
       };
 
       unitButtons.forEach(function (btn) {

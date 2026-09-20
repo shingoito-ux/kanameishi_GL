@@ -29,8 +29,6 @@ html/
   contact.html
   our-plans.html
   our-process.html
-  proven-results.html
-  transparent-pricing.html
   why-seismic-reinforcement.html
 css/style.css          Single shared stylesheet
 js/main.js             Hamburger nav + price simulator

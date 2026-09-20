@@ -2,16 +2,16 @@
       <div class="footer-inner">
         <div class="footer-col footer-brand">
           <!-- Logo placeholder: same MAMORINO lockup as the header -->
-          <img class="brand-logo" src="/image/logo.webp" alt="MAMORINO" width="150" height="34">
+          <a href="/" class="brand" aria-label="MAMORINO — Home">
+            <img class="brand-logo" src="/image/logo.webp" alt="MAMORINO" width="150" height="34">
+          </a>
           <p>Reinforce your home. Know exactly what you're paying for.</p>
         </div>
 
         <nav class="footer-col footer-nav" aria-label="Footer">
-          <a href="/html/why-seismic-reinforcement.html">Why Seismic Reinforcement</a>
-          <a href="/html/our-plans.html">Our Plans</a>
-          <a href="/html/proven-results.html">Proven Results</a>
+          <a href="/html/why-seismic-reinforcement.html">Why Seismic Reinforcement &amp; Results</a>
           <a href="/html/our-process.html">Our Process</a>
-          <a href="/html/transparent-pricing.html">Transparent Pricing</a>
+          <a href="/html/our-plans.html">Plan &amp; Pricing</a>
           <a href="/html/about.html">About Kanameishi &amp; evoltz</a>
           <a href="/html/contact.html">Contact / Get a Quote</a>
         </nav>
@@ -22,3 +22,8 @@
         </div>
       </div>
     </footer>
+
+    <!-- Mobile only: appears after scrolling (see js/main.js), hidden wherever a CTA is already on screen -->
+    <div class="sticky-cta" data-sticky-cta>
+      <a href="/html/contact.html" class="btn btn-primary btn-block">Get a Free Assessment</a>
+    </div>
