@@ -28,6 +28,7 @@
   --container: 1320px;
   --gutter: clamp(1.25rem, 4vw, 2.5rem);
   --section-pad: clamp(3rem, 6vw, 5.5rem);
+  --header-h: 4.25rem; /* sticky header height, used to place anchor jumps */
 
   --fs-h1: clamp(2.1rem, 1.5rem + 2.6vw, 3.4rem);
   --fs-h2: clamp(1.6rem, 1.35rem + 1.1vw, 2.25rem);
@@ -87,6 +88,7 @@ table { border-collapse: collapse; width: 100%; }
 .section { padding-block: var(--section-pad); }
 .section--soft { background: var(--paper-soft); }
 .section--ink { background: var(--ink); color: var(--paper); }
+.section--top { padding-top: clamp(1.5rem, 3.5vw, 2.75rem); } /* first section right under the header */
 
 .section-head { max-width: 62ch; margin-bottom: clamp(1.75rem, 4vw, 2.75rem); }
 .eyebrow {
@@ -374,7 +376,8 @@ table { border-collapse: collapse; width: 100%; }
 
 .hero {
   --hero-delay: 0.05s;
-  padding-block: clamp(2.5rem, 7vw, 5rem);
+  padding-top: clamp(1.5rem, 3.5vw, 2.75rem);
+  padding-bottom: clamp(2.5rem, 7vw, 5rem);
   display: grid;
   gap: clamp(2rem, 5vw, 3.5rem);
   align-items: center;
@@ -779,6 +782,7 @@ textarea { resize: vertical; min-height: 6.5rem; }
 @media (min-width: 860px) { .split { grid-template-columns: 1fr 1fr; } }
 .split--reverse { direction: rtl; }
 .split--reverse > * { direction: ltr; }
+.split--top { align-items: start; } /* text aligns with the top of a taller neighbour instead of floating mid-height */
 
 .prose { display: flex; flex-direction: column; gap: 1rem; max-width: 60ch; }
 .prose p { color: var(--ink-dim); }
@@ -789,7 +793,10 @@ textarea { resize: vertical; min-height: 6.5rem; }
    page-level spacing helpers (kept intentionally small — see /css/style.css note)
    ========================================================================== */
 
-.hero--page { padding-block: clamp(2rem, 5vw, 3.5rem); }
+.hero--page {
+  padding-top: clamp(1.25rem, 3vw, 2.25rem);
+  padding-bottom: clamp(2rem, 5vw, 3.5rem);
+}
 .hero--page h1 { max-width: 26ch; }
 .section-pillars { padding-bottom: clamp(2rem, 5vw, 3rem); }
 
@@ -802,7 +809,10 @@ textarea { resize: vertical; min-height: 6.5rem; }
 .partner-logo { max-width: 160px; margin-top: 0.5rem; }
 .mt-note { margin-top: 1.5rem; }
 .mt-lg { margin-top: clamp(2rem, 4vw, 3rem); }
-section[id] { scroll-margin-top: 4.5rem; } /* keep anchored sections clear of the sticky header */
+/* Anchor jumps: land so the section's heading sits ~1.5rem under the sticky header
+   (the section's own top padding is scrolled up beneath the header). */
+section[id] { scroll-margin-top: calc(var(--header-h) + 1.5rem - var(--section-pad)); }
+.contact-card[id], .notice[id] { scroll-margin-top: calc(var(--header-h) + 1.5rem); }
 
 .cta-band {
   border-radius: var(--radius-lg);
@@ -918,4 +928,32 @@ section[id] { scroll-margin-top: 4.5rem; } /* keep anchored sections clear of th
   }
   .reveal.is-in { opacity: 1; transform: none; }
   .bar-compare.reveal:not(.is-in) .bar-fill { transform: scaleX(0); }
+}
+
+/* ==========================================================================
+   notice (inline callout) + compact note list
+   ========================================================================== */
+
+.notice {
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--line-dim);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-lg);
+  background: var(--paper-soft);
+}
+.notice strong { display: block; color: var(--ink); margin-bottom: 0.25rem; }
+.notice p { color: var(--ink-dim); font-size: 0.95rem; }
+
+.note-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.note-list li { position: relative; padding-left: 1.1rem; font-size: 0.85rem; color: var(--ink-dim); }
+.note-list .btn-text { font-size: inherit; white-space: nowrap; } /* keep "Details →" together on one line */
+.note-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
 }

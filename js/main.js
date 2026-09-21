@@ -120,7 +120,7 @@
     var REVEAL_SELECTOR = [
       '.section-head', '.split > *', '.pillar', '.flow__item', '.stat-band .stat', '.stat-tile',
       '.step', '.person', '.media', '.bar-compare', '.plan-card', '.simulator', '.coming-soon',
-      '.table-wrap', '.section-cta > *'
+      '.table-wrap', '.notice', '.section-cta > *'
     ].join(', ');
 
     var revealEls = document.querySelectorAll(REVEAL_SELECTOR);
@@ -151,6 +151,41 @@
         el.style.setProperty('--i', Math.min(index, 5)); /* stagger siblings */
         el.classList.add('reveal');
         revealObserver.observe(el);
+      });
+    }
+
+    /* ---------- deep links (e.g. why-seismic-reinforcement.html#results) ---------- */
+    /* The header/footer are injected after the browser's own jump to the hash and
+       images can still shift the layout, so land on the target explicitly — now, and
+       again once everything has loaded (unless the visitor has already started scrolling). */
+
+    if (location.hash.length > 1) {
+      var deepTarget = null;
+      try {
+        deepTarget = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      } catch (err) { /* malformed hash: ignore */ }
+
+      if (deepTarget) {
+        var visitorScrolled = false;
+        ['wheel', 'touchstart', 'keydown'].forEach(function (type) {
+          window.addEventListener(type, function () { visitorScrolled = true; }, { once: true, passive: true });
+        });
+        var landOnTarget = function () {
+          if (!visitorScrolled) deepTarget.scrollIntoView({ block: 'start', behavior: 'instant' });
+        };
+        landOnTarget();
+        if (document.readyState !== 'complete') window.addEventListener('load', landOnTarget, { once: true });
+      }
+    }
+
+    /* ---------- contact form: ?inquiry=report preselects the diagnosis-report inquiry type ---------- */
+
+    var inquirySelect = document.getElementById('c-inquiry');
+    if (inquirySelect && /[?&]inquiry=report(&|$)/.test(location.search)) {
+      Array.prototype.some.call(inquirySelect.options, function (option, index) {
+        if (!/diagnosis report/i.test(option.text)) return false;
+        inquirySelect.selectedIndex = index;
+        return true;
       });
     }
 
