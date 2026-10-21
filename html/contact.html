@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact / Get a Quote — MAMORINO</title>
 <meta name="description" content="Request a free seismic reinforcement assessment for your home. No obligation — we reply within a few business days.">
+<link rel="canonical" href="https://gl.kanameishi.co.jp/html/contact.html">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/image/favicon.png" type="image/png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MAMORINO">
+<meta property="og:title" content="Contact / Get a Quote — MAMORINO">
+<meta property="og:description" content="Request a free seismic reinforcement assessment for your home. No obligation — we reply within a few business days.">
+<meta property="og:url" content="https://gl.kanameishi.co.jp/html/contact.html">
+<meta property="og:image" content="https://gl.kanameishi.co.jp/image/ogp.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -22,7 +32,10 @@
       </div>
 
       <div class="plan-card">
-        <form class="form-stack" action="#" method="post">
+        <form class="form-stack" name="contact" method="post" action="/html/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
+          <!-- Netlify Forms: email notifications to info@kaname-ishi.com are set in the Netlify dashboard (Forms → Form notifications). -->
+          <input type="hidden" name="subject" value="MAMORINO EN: New inquiry (contact page)">
+          <input type="text" name="bot-field" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="field-row cols-2">
             <div class="field"><label for="c-name">Name</label><input id="c-name" name="name" type="text" autocomplete="name" required></div>
             <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" autocomplete="email" required></div>
@@ -44,13 +57,13 @@
             <select id="c-inquiry" name="inquiry_type">
               <option>Assessment / Quote</option>
               <option>General question</option>
-              <option>Seismic diagnosis report (PDF, $500)</option>
+              <option>Seismic diagnosis report (PDF)</option>
               <option>Partnership / Referral</option>
             </select>
           </div>
           <div class="field"><label for="c-message">Message</label><textarea id="c-message" name="message" placeholder="Tell us about your home — age, size, anything you already know"></textarea></div>
           <button type="submit" class="btn btn-primary btn-block">Submit</button>
-          <p class="form-note">No obligation. We respond within a few business days.</p>
+          <p class="form-note">No obligation. We respond within a few business days. By submitting, you agree to our <a href="/html/privacy.html" class="btn-text">Privacy Policy</a>.</p>
         </form>
       </div>
     </div>

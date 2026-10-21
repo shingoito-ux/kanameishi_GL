@@ -19,6 +19,7 @@ const TYPES = {
   '.jpeg': 'image/jpeg',
   '.ico': 'image/x-icon',
   '.xml': 'application/xml; charset=utf-8',
+  '.txt': 'text/plain; charset=utf-8',
 };
 
 // Plain static file server. html/common/header.html and footer.html are
@@ -38,8 +39,11 @@ http
 
     fs.readFile(filePath, (err, data) => {
       if (err) {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('Not found: ' + reqPath);
+        // Same behaviour as Netlify / GitHub Pages: serve the root 404.html
+        fs.readFile(path.join(ROOT, '404.html'), (err404, page) => {
+          res.writeHead(404, { 'Content-Type': err404 ? 'text/plain' : TYPES['.html'] });
+          res.end(err404 ? 'Not found: ' + reqPath : page);
+        });
         return;
       }
       res.writeHead(200, { 'Content-Type': TYPES[path.extname(filePath)] || 'application/octet-stream' });

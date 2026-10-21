@@ -809,6 +809,10 @@ textarea { resize: vertical; min-height: 6.5rem; }
 .partner-logo { max-width: 160px; margin-top: 0.5rem; }
 .mt-note { margin-top: 1.5rem; }
 .mt-lg { margin-top: clamp(2rem, 4vw, 3rem); }
+/* Temporarily hides price figures site-wide — remove the class from the HTML to restore */
+.price-hidden { display: none !important; }
+/* Spam trap for Netlify Forms (netlify-honeypot): bots fill it, people never see it */
+.form-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 /* Anchor jumps: land so the section's heading sits ~1.5rem under the sticky header
    (the section's own top padding is scrolled up beneath the header). */
 section[id] { scroll-margin-top: calc(var(--header-h) + 1.5rem - var(--section-pad)); }
@@ -836,19 +840,16 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 1.5rem - var(--section-p
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: #3F61A1;
+  background: var(--paper);
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: none; /* purely visual: never block clicks on the page underneath */
   animation: introFadeOut 0.8s ease 2.0s forwards;
 }
-.site-intro__text {
-  color: #FFA05D;
-  font-family: var(--font-mono);
-  font-size: 2.5rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
+.site-intro__logo {
+  width: min(320px, 70vw);
+  height: auto;
   animation: introTextIn 1.5s ease forwards;
   opacity: 0;
   transform: translateY(20px);

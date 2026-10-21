@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gl.kanameishi.co.jp/sitemap.xml

@@ -52,10 +52,35 @@ or `footer.html` shows up on every page on the next reload — no build step.
 
 ## Before launch
 
-- Drop the final MAMORINO logo (English tagline version) in as
-  `image/mamorino-logo-en.webp` — the header and footer already reference it.
+Must-do:
+
+- **Set up form notifications in Netlify.** Both forms (`home-assessment` on
+  `index.html`, `contact` on `html/contact.html`) use Netlify Forms. In the
+  Netlify dashboard: Forms → enable form detection (if not already on), then
+  Form notifications → Email notification → info@kaname-ishi.com.
+  Submissions are also listed under Forms. Free tier: 100 submissions/month.
+- **Have the Privacy Policy reviewed** (`html/privacy.html` is a draft) by
+  Kanameishi / legal counsel, including GDPR/CCPA if targeting EU/US visitors.
+- Hosted on Netlify at https://gl.kanameishi.co.jp (root `404.html` is
+  picked up automatically). After deploying, submit `sitemap.xml` in Google
+  Search Console.
+- Drop the final MAMORINO logo (English tagline version) in — the header and
+  intro splash currently use `image/prelogo2.png`.
 - Confirm the romanized spelling of the leadership names on the About page with
   Kanameishi.
-- Replace the placeholder domain in `sitemap.xml`.
-- Wire the contact form (`html/contact.html`, `index.html`) to an actual email/CRM
-  endpoint — it currently has no `action`.
+
+Should-do:
+
+- Decide on pricing: figures are hidden with the `price-hidden` class (remove
+  it to restore; also re-add `mt-note` to the termite `.coming-soon` box on
+  `our-plans.html`). Decide whether the "Plan & Pricing" nav label stays.
+- Supply a high-res square icon for `apple-touch-icon` (the current favicon
+  is generated from the 82×64 `image/logo(icon).webp`).
+- Delete unused images: `hero2.webp`, `team.jpg` (replaced by `team.webp`),
+  `OGP.webp` (replaced by `ogp.jpg`), `prelogo.webp`, `logowhite.webp`,
+  `logo（concept）.webp`, `logowhite（concept）.webp`, `mamorino-base.webp`,
+  `workst4.webp`.
+- Add analytics (e.g. GA4) if wanted — then add a cookie notice and update
+  the Cookies section of the Privacy Policy.
+- Verify claims and sources (Noto "0 / 573", subsidy wording) with Kanameishi.
+- Final QA: real phones, link check, Lighthouse, test a real form submission.

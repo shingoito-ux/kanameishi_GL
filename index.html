@@ -5,12 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MAMORINO — Seismic Reinforcement, Priced Clearly</title>
 <meta name="description" content="MAMORINO brings Japan's proven seismic reinforcement technology to your home, with transparent, area-based pricing. Get a free assessment.">
+<link rel="canonical" href="https://gl.kanameishi.co.jp/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/image/favicon.png" type="image/png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MAMORINO">
+<meta property="og:title" content="MAMORINO — Seismic Reinforcement, Priced Clearly">
+<meta property="og:description" content="MAMORINO brings Japan's proven seismic reinforcement technology to your home, with transparent, area-based pricing. Get a free assessment.">
+<meta property="og:url" content="https://gl.kanameishi.co.jp/">
+<meta property="og:image" content="https://gl.kanameishi.co.jp/image/ogp.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <!-- Site Intro Animation -->
-<div class="site-intro">
-  <div class="site-intro__text">MAMORINO</div>
+<div class="site-intro" aria-hidden="true">
+  <img class="site-intro__logo" src="/image/prelogo2.png" alt="" width="3892" height="815">
 </div>
 
 <div data-include="/html/common/header.html"></div>
@@ -128,13 +138,13 @@
         <ul class="note-list">
           <li>Termite and foundation-rot repair are available as an add-on, priced after an on-site inspection.</li>
           <li>Already purchased the property? Regional subsidies may be available. <a href="/html/our-plans.html#subsidies" class="btn-text">Details →</a></li>
-          <li>Overseas? Get the seismic diagnosis for a specific property as a PDF — $500. <a href="/html/our-plans.html#report" class="btn-text">Details →</a></li>
+          <li>Overseas? Get the seismic diagnosis for a specific property as a PDF<span class="price-hidden"> — $500</span>. <a href="/html/our-plans.html#report" class="btn-text">Details →</a></li>
         </ul>
       </div>
       <div class="plan-card">
         <span class="plan-card__tag">MAMORINO Base</span>
         <h3>Seismic Reinforcement Only</h3>
-        <div class="plan-card__price">¥500,000 <small>base</small> + ¥50,000 <small>/ m²</small></div>
+        <div class="plan-card__price price-hidden">¥500,000 <small>base</small> + ¥50,000 <small>/ m²</small></div>
         <p class="plan-card__desc">For owners who want their home's structural safety brought up to standard first — without touching the budget for anything else.</p>
         <ul>
           <li>Site survey &amp; seismic diagnosis</li>
@@ -152,7 +162,10 @@
         <span class="plan-card__tag">Get Started</span>
         <h3>Get a Free Assessment</h3>
         <p class="plan-card__desc">Tell us about your property. No obligation, and we'll reply within a few business days.</p>
-        <form class="form-stack" action="#" method="post">
+        <form class="form-stack" name="home-assessment" method="post" action="/html/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
+          <!-- Netlify Forms: email notifications to info@kaname-ishi.com are set in the Netlify dashboard (Forms → Form notifications). -->
+          <input type="hidden" name="subject" value="MAMORINO EN: New assessment request (home page)">
+          <input type="text" name="bot-field" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="field-row cols-2">
             <div class="field"><label for="home-name">Name</label><input id="home-name" name="name" type="text" autocomplete="name" required></div>
             <div class="field"><label for="home-email">Email</label><input id="home-email" name="email" type="email" autocomplete="email" required></div>
@@ -160,6 +173,7 @@
           <div class="field"><label for="home-location">Property location</label><input id="home-location" name="location" type="text" placeholder="City, State / Country"></div>
           <div class="field"><label for="home-message">Message</label><textarea id="home-message" name="message" placeholder="Tell us a little about your home"></textarea></div>
           <button type="submit" class="btn btn-primary btn-block">Submit</button>
+          <p class="form-note">By submitting, you agree to our <a href="/html/privacy.html" class="btn-text">Privacy Policy</a>.</p>
         </form>
         <p class="form-note">Looking for the full inquiry form, including building type and partnership inquiries? <a href="/html/contact.html" class="btn-text">Go to Contact →</a></p>
       </div>
