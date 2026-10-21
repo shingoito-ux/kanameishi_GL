@@ -56,26 +56,21 @@ Hosted on Netlify at https://gl.kanameishi.co.jp (deploys from `master`).
 Both contact forms (`home-assessment` on `index.html`, `contact` on
 `html/contact.html`) use Netlify Forms; notifications go to
 info@kaname-ishi.com (Netlify dashboard → Forms → Form notifications).
-`image/logo(icon).webp` is the source for `favicon.ico` / `image/favicon.png`.
+Favicons and home-screen icons (`favicon.ico`, `image/favicon.png`,
+`image/apple-touch-icon.png`, `image/icon-192.png`, `image/icon-512.png`) are
+cut from the house mark in `image/logo.webp`.
 
 Must-do:
 
 - Submit `https://gl.kanameishi.co.jp/sitemap.xml` in Google Search Console.
-- **Have the Privacy Policy reviewed** (`html/privacy.html` is a draft) by
-  Kanameishi / legal counsel, including GDPR/CCPA if targeting EU/US visitors.
-- Drop the final MAMORINO logo (English tagline version) in — the header and
-  intro splash currently use `image/prelogo2.png`.
-- Confirm the romanized spelling of the leadership names on the About page with
-  Kanameishi.
 
 Should-do:
 
 - Decide on pricing: figures are hidden with the `price-hidden` class (remove
   it to restore; also re-add `mt-note` to the termite `.coming-soon` box on
   `our-plans.html`). Decide whether the "Plan & Pricing" nav label stays.
-- Supply a high-res square icon for `apple-touch-icon` (the current favicon
-  is generated from the 82×64 `image/logo(icon).webp`).
+- `image/prelogo2.png` (header + intro splash) is the approved interim logo;
+  swap in the final lockup when it's ready.
 - Add analytics (e.g. GA4) if wanted — then add a cookie notice and update
   the Cookies section of the Privacy Policy.
-- Verify claims and sources (Noto "0 / 573", subsidy wording) with Kanameishi.
 - Final QA: real phones, link check, Lighthouse.
